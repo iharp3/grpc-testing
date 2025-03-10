@@ -1,0 +1,5 @@
+grpcio
+
+# Tools are needed for development, but you don't need to 
+# export this package to the actual running servers.
+grpcio-tools
