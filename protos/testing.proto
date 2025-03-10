@@ -1,0 +1,16 @@
+syntax = "proto3";
+
+service DBNode {
+    rpc Count(RangeRequest) returns (SingleResponse) {}
+
+    rpc Sum(RangeRequest) returns (SingleResponse) {}
+}
+
+message RangeRequest {
+    int32 idStart = 1;
+    int32 idEnd = 2;
+}
+
+message SingleResponse {
+    int32 result = 1;
+}
