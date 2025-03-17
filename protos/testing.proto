@@ -4,6 +4,8 @@ service DBNode {
     rpc Count(RangeRequest) returns (SingleResponse) {}
 
     rpc Sum(RangeRequest) returns (SingleResponse) {}
+
+    rpc Insert(stream DataRequest) returns (InsertDataAcknowledgement) {}
 }
 
 message RangeRequest {
@@ -13,4 +15,12 @@ message RangeRequest {
 
 message SingleResponse {
     int32 result = 1;
+}
+
+message DataRequest {
+    int32 key = 1;
+    int32 value = 2;
+}
+
+message InsertDataAcknowledgement {
 }

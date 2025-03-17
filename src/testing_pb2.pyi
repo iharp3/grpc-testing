@@ -17,3 +17,15 @@ class SingleResponse(_message.Message):
     RESULT_FIELD_NUMBER: _ClassVar[int]
     result: int
     def __init__(self, result: _Optional[int] = ...) -> None: ...
+
+class DataRequest(_message.Message):
+    __slots__ = ("key", "value")
+    KEY_FIELD_NUMBER: _ClassVar[int]
+    VALUE_FIELD_NUMBER: _ClassVar[int]
+    key: int
+    value: int
+    def __init__(self, key: _Optional[int] = ..., value: _Optional[int] = ...) -> None: ...
+
+class InsertDataAcknowledgement(_message.Message):
+    __slots__ = ()
+    def __init__(self) -> None: ...

@@ -44,6 +44,11 @@ class DBNodeStub(object):
                 request_serializer=testing__pb2.RangeRequest.SerializeToString,
                 response_deserializer=testing__pb2.SingleResponse.FromString,
                 _registered_method=True)
+        self.Insert = channel.stream_unary(
+                '/DBNode/Insert',
+                request_serializer=testing__pb2.DataRequest.SerializeToString,
+                response_deserializer=testing__pb2.InsertDataAcknowledgement.FromString,
+                _registered_method=True)
 
 
 class DBNodeServicer(object):
@@ -61,6 +66,12 @@ class DBNodeServicer(object):
         context.set_details('Method not implemented!')
         raise NotImplementedError('Method not implemented!')
 
+    def Insert(self, request_iterator, context):
+        """Missing associated documentation comment in .proto file."""
+        context.set_code(grpc.StatusCode.UNIMPLEMENTED)
+        context.set_details('Method not implemented!')
+        raise NotImplementedError('Method not implemented!')
+
 
 def add_DBNodeServicer_to_server(servicer, server):
     rpc_method_handlers = {
@@ -73,6 +84,11 @@ def add_DBNodeServicer_to_server(servicer, server):
                     servicer.Sum,
                     request_deserializer=testing__pb2.RangeRequest.FromString,
                     response_serializer=testing__pb2.SingleResponse.SerializeToString,
+            ),
+            'Insert': grpc.stream_unary_rpc_method_handler(
+                    servicer.Insert,
+                    request_deserializer=testing__pb2.DataRequest.FromString,
+                    response_serializer=testing__pb2.InsertDataAcknowledgement.SerializeToString,
             ),
     }
     generic_handler = grpc.method_handlers_generic_handler(
@@ -129,6 +145,33 @@ class DBNode(object):
             '/DBNode/Sum',
             testing__pb2.RangeRequest.SerializeToString,
             testing__pb2.SingleResponse.FromString,
+            options,
+            channel_credentials,
+            insecure,
+            call_credentials,
+            compression,
+            wait_for_ready,
+            timeout,
+            metadata,
+            _registered_method=True)
+
+    @staticmethod
+    def Insert(request_iterator,
+            target,
+            options=(),
+            channel_credentials=None,
+            call_credentials=None,
+            insecure=False,
+            compression=None,
+            wait_for_ready=None,
+            timeout=None,
+            metadata=None):
+        return grpc.experimental.stream_unary(
+            request_iterator,
+            target,
+            '/DBNode/Insert',
+            testing__pb2.DataRequest.SerializeToString,
+            testing__pb2.InsertDataAcknowledgement.FromString,
             options,
             channel_credentials,
             insecure,

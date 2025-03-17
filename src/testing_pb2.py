@@ -24,7 +24,7 @@ _sym_db = _symbol_database.Default()
 
 
 
-DESCRIPTOR = _descriptor_pool.Default().AddSerializedFile(b'\n\rtesting.proto\".\n\x0cRangeRequest\x12\x0f\n\x07idStart\x18\x01 \x01(\x05\x12\r\n\x05idEnd\x18\x02 \x01(\x05\" \n\x0eSingleResponse\x12\x0e\n\x06result\x18\x01 \x01(\x05\x32\\\n\x06\x44\x42Node\x12)\n\x05\x43ount\x12\r.RangeRequest\x1a\x0f.SingleResponse\"\x00\x12\'\n\x03Sum\x12\r.RangeRequest\x1a\x0f.SingleResponse\"\x00\x62\x06proto3')
+DESCRIPTOR = _descriptor_pool.Default().AddSerializedFile(b'\n\rtesting.proto\".\n\x0cRangeRequest\x12\x0f\n\x07idStart\x18\x01 \x01(\x05\x12\r\n\x05idEnd\x18\x02 \x01(\x05\" \n\x0eSingleResponse\x12\x0e\n\x06result\x18\x01 \x01(\x05\")\n\x0b\x44\x61taRequest\x12\x0b\n\x03key\x18\x01 \x01(\x05\x12\r\n\x05value\x18\x02 \x01(\x05\"\x1b\n\x19InsertDataAcknowledgement2\x94\x01\n\x06\x44\x42Node\x12)\n\x05\x43ount\x12\r.RangeRequest\x1a\x0f.SingleResponse\"\x00\x12\'\n\x03Sum\x12\r.RangeRequest\x1a\x0f.SingleResponse\"\x00\x12\x36\n\x06Insert\x12\x0c.DataRequest\x1a\x1a.InsertDataAcknowledgement\"\x00(\x01\x62\x06proto3')
 
 _globals = globals()
 _builder.BuildMessageAndEnumDescriptors(DESCRIPTOR, _globals)
@@ -35,6 +35,10 @@ if not _descriptor._USE_C_DESCRIPTORS:
   _globals['_RANGEREQUEST']._serialized_end=63
   _globals['_SINGLERESPONSE']._serialized_start=65
   _globals['_SINGLERESPONSE']._serialized_end=97
-  _globals['_DBNODE']._serialized_start=99
-  _globals['_DBNODE']._serialized_end=191
+  _globals['_DATAREQUEST']._serialized_start=99
+  _globals['_DATAREQUEST']._serialized_end=140
+  _globals['_INSERTDATAACKNOWLEDGEMENT']._serialized_start=142
+  _globals['_INSERTDATAACKNOWLEDGEMENT']._serialized_end=169
+  _globals['_DBNODE']._serialized_start=172
+  _globals['_DBNODE']._serialized_end=320
 # @@protoc_insertion_point(module_scope)
