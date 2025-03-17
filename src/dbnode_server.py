@@ -1,6 +1,7 @@
 from concurrent import futures
 import logging
 
+import sys
 import grpc
 import testing_pb2
 import testing_pb2_grpc
@@ -19,8 +20,7 @@ class DBNode(testing_pb2_grpc.DBNodeServicer):
 
 
 
-def serve():
-    port = "50051"
+def serve(port):
     server = grpc.server(futures.ThreadPoolExecutor(max_workers=10))
     testing_pb2_grpc.add_DBNodeServicer_to_server(DBNode(), server)
     server.add_insecure_port("[::]:" + port)
@@ -31,4 +31,7 @@ def serve():
 
 if __name__ == "__main__":
     logging.basicConfig()
-    serve()
+    if len(sys.argv) < 2:
+        print("Usage: python dbnode_server.py [Port Number]")
+    port = sys.argv[1]
+    serve(port)
